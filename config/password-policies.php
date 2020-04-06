@@ -13,8 +13,9 @@ return [
     // -- Models observed for password change
     'password_history_models' => [
         [
-            'class'	=> \App\User::class,
-            'field'	=> 'password',
+            \App\Models\User::class = [
+                'field'	=> 'password',
+            ]
         ],
     ],
 ];

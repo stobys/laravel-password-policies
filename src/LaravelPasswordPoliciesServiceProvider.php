@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 
+use SylveK\LaravelPasswordPolicies\LaravelPasswordPoliciesManager as PasswordPolicyManager;
 use SylveK\LaravelPasswordPolicies\Commands\ClearPasswordHistory;
 
 // use SylveK\LaravelPasswordPolicies\Observers\UserObserver;
@@ -33,9 +34,7 @@ class LaravelPasswordPoliciesServiceProvider extends ServiceProvider
             ]);
         }
 
-        // collect(config('password-policies.password_history_models')) -> map(function ($model) {
-        //     class_exists($model['class']) ? $model['class']::observe(UserObserver::class) : null;
-        // });
+        PasswordPolicyManager::listenForPasswordChanges();
     }
 
     /**
