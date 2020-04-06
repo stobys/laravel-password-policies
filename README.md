@@ -13,7 +13,7 @@ composer require stobys/laravel-password-policies
 In order to start, you have to publish the config file, and the migration:
 
 ```bash
-php artisan vendor:public --provider="SylveK\LaravelPasswordPolicies\LaravelPasswordPoliciesServiceProvider"
+php artisan vendor:publish --provider="SylveK\LaravelPasswordPolicies\LaravelPasswordPoliciesServiceProvider"
 ```
 
 Modify the config file according to your project, then migrate the database
