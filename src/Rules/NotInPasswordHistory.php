@@ -1,10 +1,10 @@
 <?php
 
-namespace SylveK\PasswordPolicies\Rules;
+namespace SylveK\LaravelPasswordPolicies\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-use SylveK\PaswordPolicies\Models\PasswordHistory;
+use SylveK\LaravelPasswordPolicies\Models\PasswordHistory;
 
 class NotInPasswordHistory implements Rule
 {
@@ -22,9 +22,9 @@ class NotInPasswordHistory implements Rule
     public function passes($attribute, $value)
     {
         $passwordHistories = PasswordHistory::fetchHistory($this->user, $this->checkPrevious);
-		
+
         foreach ($passwordHistories as $passwordHistory) {
-            if ( app('hash')->check($value, $passwordHistory->password) ) {
+            if (app('hash')->check($value, $passwordHistory->password)) {
                 return false;
             }
         }

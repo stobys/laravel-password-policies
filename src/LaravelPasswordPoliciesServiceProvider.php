@@ -4,8 +4,8 @@
 namespace SylveK\LaravelPasswordPolicies;
 
 use Illuminate\Support\ServiceProvider;
-use SylveK\LaravelPasswordPolicies\Console\ClearOldPasswordHistory;
-use SylveK\LaravelPasswordPolicies\Observers\UserObserver;
+
+// use SylveK\LaravelPasswordPolicies\Observers\UserObserver;
 
 class LaravelPasswordPoliciesServiceProvider extends ServiceProvider
 {
@@ -20,15 +20,14 @@ class LaravelPasswordPoliciesServiceProvider extends ServiceProvider
             $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
             // -- Registering package commands.
-            // $this->commands([
-            //     ClearOldPasswordHistory::class,
-            //     ClearAllPasswordHistory::class,
-            // ]);
+            $this->commands([
+                ClearPasswordHistory::class
+            ]);
         }
 
-        collect(config('password-policies.password_history_models')) -> map(function ($model) {
-            class_exists($model['class']) ? $model['class']::observe(UserObserver::class) : null;
-        });
+        // collect(config('password-policies.password_history_models')) -> map(function ($model) {
+        //     class_exists($model['class']) ? $model['class']::observe(UserObserver::class) : null;
+        // });
     }
 
     // -- Register the application services.

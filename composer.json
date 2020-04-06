@@ -2,6 +2,13 @@
     "name": "stobys/laravel-password-policies",
     "type": "project",
     "description": "The Laravel password policies.",
+    "homepage": "https://github.com/stobys/laravel-password-policies",
+    "authors": [
+        {
+            "name"  : "SylveK",
+            "email" : "s.tobys@gmail.com"
+        }
+    ],
     "keywords": [
         "laravel",
 		"password policy",
@@ -13,7 +20,17 @@
     },
     "autoload": {
         "psr-4": {
-            "SylveK\\": "src/"
+            "SylveK\\LaravelPasswordPolicies": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SylveK\\LaravelPasswordPolicies\\LaravelPasswordPoliciesServiceProvider"
+            ]
         }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace SylveK\LaravelPasswordPlicies\Traits;
+namespace SylveK\LaravelPasswordPolicies\Traits;
 
 use SylveK\LaravelPasswordPolicies\Models\PasswordHistory;
 
@@ -14,22 +14,22 @@ trait PasswordHistoryTrait
 
     public function deleteOlderPasswordHistory()
     {
-		$depth = config('password-policies.password_history_depth', 5);
-		$count = $this -> passwordHistory() -> where('user_id', $this->id) -> count();
-		
+        $depth = config('password-policies.password_history_depth', 5);
+        $count = $this -> passwordHistory() -> where('user_id', $this->id) -> count();
+
         $this -> passwordHistory()
-				-> where('user_id', $this->id) 
-				-> addSelect(['id' => PasswordHistory::select('id')
-					-> where('user_id', $this -> id)
-					-> oldest()
-					-> take($count - $depth)
-				]) -> get();
+                -> where('user_id', $this->id)
+                -> addSelect(['id' => PasswordHistory::select('id')
+                    -> where('user_id', $this -> id)
+                    -> oldest()
+                    -> take($count - $depth)
+                ]) -> get();
     }
-	
+
     public function clearPasswordHistory()
     {
-        $this -> passwordHistory() 
-				-> where('user_id', $this->id) 
-				-> delete();
+        $this -> passwordHistory()
+                -> where('user_id', $this->id)
+                -> delete();
     }
 }
