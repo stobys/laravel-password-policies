@@ -3,15 +3,35 @@
 namespace SylveK\LaravelPasswordPolicies\Commands;
 
 use Illuminate\Console\Command;
+use SylveK\LaravelPasswordPolicies\Models\PasswordHistory;
 
 class ClearPasswordHistory extends Command
 {
-    protected $signature = 'password-policies:clear-password-history';
+    // -- The name and signature of the console command.
+    protected $signature = 'password-history:clear
+                                {--user : user do delete history}';
 
-    protected $description = 'Clear users whole password history';
+    protected $description = 'Clears password history';
 
     public function handle()
     {
-        $this->error('@TODO');
+        $user = $this -> option('user');
+
+        switch (true) {
+            case is_null($user):
+                PasswordHistory::truncate();
+            break;
+
+            case is_int($user):
+                PasswordHistory::where('user_id', $user) -> delete();
+            break;
+
+            case is_string($user):
+                $user = User::where('username', $user)->firstOrFail();
+                PasswordHistory::where('user_id', $user->id) -> delete();
+            break;
+        }
+
+        $this->comment('    >> Password History cleared!');
     }
 }
