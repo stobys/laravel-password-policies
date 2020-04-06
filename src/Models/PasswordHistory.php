@@ -1,6 +1,6 @@
 <?php
 
-namespace SylveK\LaravelPasswordPolicies;
+namespace SylveK\LaravelPasswordPolicies\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
