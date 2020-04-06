@@ -20,11 +20,11 @@ class LaravelPasswordPoliciesServiceProvider extends ServiceProvider
 
                 $this->publishes([
                     __DIR__.'/../config/password-policies.php' => config_path('password-policies.php'),
-                ], 'config');
+                ], 'password-policies-config');
 
                 $this->publishes([
                     __DIR__.'/../database/migrations/create_password_histories_table.php.stub' => $this->getMigrationFileName($filesystem),
-                ], 'migrations');
+                ], 'password-policies-migration');
             }
 
             // -- Registering package commands.
