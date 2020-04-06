@@ -4,6 +4,7 @@ namespace SylveK\LaravelPasswordPolicies\Commands;
 
 use Illuminate\Console\Command;
 use SylveK\LaravelPasswordPolicies\Models\PasswordHistory;
+use App\Models\User;
 
 class ClearPasswordHistory extends Command
 {

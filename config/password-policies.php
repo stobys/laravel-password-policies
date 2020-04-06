@@ -1,6 +1,8 @@
 <?php
 
 return [
+    // -- User model
+    'user_model'    => App\Models\User::class,
 
     // -- The table name to store password histories in
     'password_history_table' => 'password_histories',
