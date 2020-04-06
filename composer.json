@@ -5,11 +5,11 @@
     "keywords": [
         "laravel",
 		"password policy",
-		"password history",
+		"password history"
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.2",
+        "php": "^7.2"
     },
     "autoload": {
         "psr-4": {
