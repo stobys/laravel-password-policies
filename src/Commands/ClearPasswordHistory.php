@@ -28,8 +28,10 @@ class ClearPasswordHistory extends Command
             break;
 
             case is_string($user):
-                $user = User::where('username', $user)->firstOrFail();
-                PasswordHistory::where('user_id', $user->id) -> delete();
+                $user = User::where('username', $user)->first();
+                if ($user) {
+                    PasswordHistory::where('user_id', $user->id) -> delete();
+                }
             break;
         }
 
