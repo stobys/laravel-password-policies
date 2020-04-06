@@ -11,14 +11,6 @@ class ClearPasswordHistory extends Command
     protected $signature = 'password-history:clear
                                 {--user= : user do delete history}';
 
-    protected $description = 'Create a permission';
-
-    public function handle()
-    {
-        $permissionClass = app(PermissionContract::class);
-
-        $permission = $permissionClass::findOrCreate($this->argument('name'), $this->argument('guard'));
-
     protected $description = 'Clears password history';
 
     public function handle()
