@@ -33,6 +33,6 @@ class LaravelPasswordPoliciesServiceProvider extends ServiceProvider
     public function register()
     {
         // -- Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/passwordHistory.php', 'password-policies');
+        $this->mergeConfigFrom(__DIR__.'/../config/password-policies.php', 'password-policies');
     }
 }
