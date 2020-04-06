@@ -23,7 +23,7 @@ class ClearPasswordHistory extends Command
                 PasswordHistory::truncate();
             break;
 
-            case is_int($user):
+            case is_numeric($user):
                 PasswordHistory::where('user_id', $user) -> delete();
             break;
 
