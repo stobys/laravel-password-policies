@@ -9,7 +9,15 @@ class ClearPasswordHistory extends Command
 {
     // -- The name and signature of the console command.
     protected $signature = 'password-history:clear
-                                {--user : user do delete history}';
+                                {--user= : user do delete history}';
+
+    protected $description = 'Create a permission';
+
+    public function handle()
+    {
+        $permissionClass = app(PermissionContract::class);
+
+        $permission = $permissionClass::findOrCreate($this->argument('name'), $this->argument('guard'));
 
     protected $description = 'Clears password history';
 
