@@ -10,7 +10,7 @@ class ClearPasswordHistory extends Command
 {
     // -- The name and signature of the console command.
     protected $signature = 'password-history:clear
-                                {--user= : user do delete history}';
+                                {--user= : optional, user (id or username) do delete history}';
 
     protected $description = 'Clears password history';
 
