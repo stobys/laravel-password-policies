@@ -17,10 +17,22 @@ class PasswordHistory extends Model
         parent::__construct($attributes);
     }
 
-    // -- Store Current Password Into History
-    public static function storeCurrentPasswordInHistory($password, $user = null)
+    // -- Models related user
+    public function user()
+    {
+        return $this -> belongsTo(User::class);
+    }
+
+    public function creator()
+    {
+        return $this -> belongsTo(User::class, 'created_by');
+    }
+
+    // -- Put Password Into History
+    public static function putPasswordInHistory($password, $user = null)
     {
         $user = self::getUser($user);
+        $created_by = auth()->user();
 
         PasswordHistory::create(get_defined_vars());
     }
