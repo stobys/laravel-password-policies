@@ -9,7 +9,7 @@ use App\Models\User;
 class PasswordHistory extends Model
 {
     protected $fillable = ['user_id', 'password', 'created_by'];
-	protected $depth =
+	protected $depth = 5;
 
 	// -- PasswordHistory constructor.
     public function __construct(array $attributes = [])
