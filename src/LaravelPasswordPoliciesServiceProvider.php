@@ -50,8 +50,8 @@ class LaravelPasswordPoliciesServiceProvider extends ServiceProvider
 
         return Collection::make($this->app->databasePath().DIRECTORY_SEPARATOR.'migrations'.DIRECTORY_SEPARATOR)
             ->flatMap(function ($path) use ($filesystem) {
-                return $filesystem->glob($path.'*_create_password_histories_tables.php');
-            })->push($this->app->databasePath()."/migrations/{$timestamp}_create_password_histories_tables.php")
+                return $filesystem->glob($path.'*_create_password_histories_table.php');
+            })->push($this->app->databasePath()."/migrations/{$timestamp}_create_password_histories_table.php")
             ->first();
     }
 
