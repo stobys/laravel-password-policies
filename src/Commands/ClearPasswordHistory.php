@@ -31,6 +31,10 @@ class ClearPasswordHistory extends Command
                 $user = User::where('username', $user)->first();
                 if ($user) {
                     PasswordHistory::where('user_id', $user->id) -> delete();
+
+                    // PasswordHistory::addSelect(['user_id' => User::select('id')
+                    //     -> where('username', $user)
+                    // ]) -> delete();
                 }
             break;
         }
