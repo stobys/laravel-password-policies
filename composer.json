@@ -1,0 +1,19 @@
+{
+    "name": "stobys/laravel-password-policies",
+    "type": "project",
+    "description": "The Laravel password policies.",
+    "keywords": [
+        "laravel",
+		"password policy",
+		"password history",
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.2",
+    },
+    "autoload": {
+        "psr-4": {
+            "SylveK\\": "src/"
+        }
+    }
+}
