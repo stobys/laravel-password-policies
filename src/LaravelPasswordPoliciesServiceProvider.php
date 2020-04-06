@@ -4,6 +4,8 @@ namespace SylveK\LaravelPasswordPolicies;
 
 use Illuminate\Support\ServiceProvider;
 
+use SylveK\LaravelPasswordPolicies\Commands\ClearPasswordHistory;
+
 // use SylveK\LaravelPasswordPolicies\Observers\UserObserver;
 
 class LaravelPasswordPoliciesServiceProvider extends ServiceProvider
