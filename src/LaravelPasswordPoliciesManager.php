@@ -16,10 +16,10 @@ class LaravelPasswordPoliciesManager
 
     public function logPasswordChange($user)
     {
-        return PasswordHistory::create(
+        return PasswordHistory::create([
             'user_id'       => $user -> id,
             'password'      => $user -> password,
             'created_by'    => optional(auth()->user())->id,
-        );
+        ]);
     }
 }
