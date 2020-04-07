@@ -9,21 +9,14 @@ class LaravelPasswordPoliciesManager
 {
     public static function listenForPasswordChanges()
     {
-        $models = config('password-policies.password_history_models');
-
-        // foreach ($models as $modelClass => $modelDetails) {
-        //     $modelClass::observe(UserObserver::class);
-        // }
-
-        collect(config('password-policies.password_history_models')) -> map(function ($model, $test) {
-            dd($model, $test);
+        collect(config('password-policies.password_history_models')) -> map(function ($model, $details) {
             class_exists($model['class']) ? $model['class']::observe(PasswordChangeObserver::class) : null;
         });
 
-        // $userModels = array_keys(config('password_history.models'));
+        // $models = array_keys(config('password-policies.password_history_models'));
 
-        // foreach ($userModels as $userModel) {
-        //     $userModel::observe(UserObserver::class);
+        // foreach ($models as $model) {
+        //     $model::observe(UserObserver::class);
         // }
     }
 
