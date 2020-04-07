@@ -7,7 +7,7 @@ use SylveK\LaravelPasswordPolicies\Observers\PasswordChangeObserver;
 
 class LaravelPasswordPoliciesManager
 {
-    public static function listenForPasswordChanges()
+    public function listenForPasswordChanges()
     {
         collect(config('password-policies.password_history_models')) -> map(function ($model, $details) {
             class_exists($model['class']) ? $model['class']::observe(PasswordChangeObserver::class) : null;

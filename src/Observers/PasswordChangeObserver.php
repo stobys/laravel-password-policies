@@ -3,8 +3,7 @@
 namespace SylveK\LaravelPasswordPolicies\Observers;
 
 use Illuminate\Support\Arr;
-
-use SylveK\LaravelPasswordPolicies\LaravelPasswordPoliciesManager;
+use SylveK\LaravelPasswordPolicies\Facades\PasswordPoliciesManager;
 
 // use Imanghafoori\PasswordHistory\Facades\PasswordHistoryManager;
 // use Infinitypaul\LaravelPasswordHistoryValidation\Models\PasswordHistoryRepo;
@@ -13,7 +12,7 @@ class PasswordChangeObserver
 {
     public function saved($user)
     {
-        LaravelPasswordPoliciesManager::logForUserModel($user);
+        PasswordPoliciesManager::logForUserModel($user);
     }
 
     // public function updated($user)

@@ -7,6 +7,7 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 
 use SylveK\LaravelPasswordPolicies\Commands\ClearPasswordHistory;
+use SylveK\LaravelPasswordPolicies\Facades\PasswordPoliciesManager;
 
 // use SylveK\LaravelPasswordPolicies\Observers\UserObserver;
 
@@ -33,7 +34,7 @@ class LaravelPasswordPoliciesServiceProvider extends ServiceProvider
             ]);
         }
 
-        LaravelPasswordPoliciesManager::listenForPasswordChanges();
+        PasswordPoliciesManager::listenForPasswordChanges();
     }
 
     /**
