@@ -14,12 +14,14 @@ class LaravelPasswordPoliciesManager
         });
     }
 
-    public function logPasswordChange($user)
+    public function logPasswordChange($model)
     {
-        return PasswordHistory::create([
-            'user_id'       => $user -> id,
-            'password'      => $user -> password,
-            'created_by'    => optional(auth()->user())->id,
-        ]);
+        if (array_has('password', $model->getChanges())) {
+            return PasswordHistory::create([
+                'user_id'       => $model -> id,
+                'password'      => $model -> password,
+                'created_by'    => optional(auth()->user())->id,
+            ]);
+        }
     }
 }
