@@ -33,7 +33,7 @@ class NotContainPersonalData implements Rule
         ];
 
         foreach ($personalData as $data) {
-            if (Str::contains($value, $data)) {
+            if (Str::contains(strtolower($value), $data)) {
                 return false;
             }
         }
