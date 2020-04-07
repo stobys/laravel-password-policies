@@ -6,6 +6,8 @@ use Illuminate\Contracts\Validation\Rule;
 
 use SylveK\LaravelPasswordPolicies\Models\PasswordHistory;
 
+// use SylveK\LaravelPasswordPolicies\Facades\PasswordHistoryManager;
+
 class NotInPasswordHistory implements Rule
 {
     protected $user;
@@ -16,6 +18,11 @@ class NotInPasswordHistory implements Rule
     {
         $this -> user = $user;
         $this -> depth = config('password-policies.password_history_depth', 5);
+    }
+
+    public static function ofUser($user)
+    {
+        return new static($user);
     }
 
     // -- when rule passes validation
@@ -30,6 +37,8 @@ class NotInPasswordHistory implements Rule
         }
 
         return true;
+
+        // return PasswordHistoryManager::notInHistory($value, $this->user, $this->depth);
     }
 
     // -- Message for failed validation

@@ -17,6 +17,8 @@ class LaravelPasswordPoliciesManager
     public function logPasswordChange($model)
     {
         if (array_has($model->getChanges(), 'password')) {
+            // PasswordHistory::putPasswordInHistory($password, $user = null);
+
             return PasswordHistory::create([
                 'user_id'       => $model -> id,
                 'password'      => $model -> password,
