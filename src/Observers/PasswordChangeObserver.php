@@ -12,7 +12,7 @@ class PasswordChangeObserver
 {
     public function saved($user)
     {
-        PasswordPoliciesManager::logForUserModel($user);
+        PasswordPoliciesManager::logPasswordChange($user);
     }
 
     // public function updated($user)
