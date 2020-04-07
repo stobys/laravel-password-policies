@@ -21,7 +21,7 @@ class NotInPasswordHistory implements Rule
     // -- when rule passes validation
     public function passes($attribute, $value)
     {
-        $passwordHistories = PasswordHistory::fetchHistory($this->user, $this->checkPrevious);
+        $passwordHistories = PasswordHistory::fetchHistory($this->depth, $this->user);
 
         foreach ($passwordHistories as $passwordHistory) {
             if (app('hash')->check($value, $passwordHistory->password)) {

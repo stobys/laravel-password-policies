@@ -4,12 +4,9 @@ namespace SylveK\LaravelPasswordPolicies;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Collection;
 
 use SylveK\LaravelPasswordPolicies\Commands\ClearPasswordHistory;
 use SylveK\LaravelPasswordPolicies\Facades\PasswordPoliciesManager;
-
-// use SylveK\LaravelPasswordPolicies\Observers\UserObserver;
 
 class LaravelPasswordPoliciesServiceProvider extends ServiceProvider
 {
@@ -47,7 +44,7 @@ class LaravelPasswordPoliciesServiceProvider extends ServiceProvider
     {
         $timestamp = date('Y_m_d_His');
 
-        return Collection::make($this->app->databasePath().DIRECTORY_SEPARATOR.'migrations'.DIRECTORY_SEPARATOR)
+        return collect($this->app->databasePath().DIRECTORY_SEPARATOR.'migrations'.DIRECTORY_SEPARATOR)
             ->flatMap(function ($path) use ($filesystem) {
                 return $filesystem->glob($path.'*_create_password_histories_table.php');
             })->push($this->app->databasePath()."/migrations/{$timestamp}_create_password_histories_table.php")
