@@ -11,14 +11,20 @@ class LaravelPasswordPoliciesManager
     {
         $models = config('password-policies.password_history_models');
 
-        foreach ($models as $modelClass => $modelDetails) {
-            $modelClass::observe(UserObserver::class);
-        }
+        // foreach ($models as $modelClass => $modelDetails) {
+        //     $modelClass::observe(UserObserver::class);
+        // }
 
         collect(config('password-policies.password_history_models')) -> map(function ($model, $test) {
             dd($model, $test);
             class_exists($model['class']) ? $model['class']::observe(PasswordChangeObserver::class) : null;
         });
+
+        // $userModels = array_keys(config('password_history.models'));
+
+        // foreach ($userModels as $userModel) {
+        //     $userModel::observe(UserObserver::class);
+        // }
     }
 
     public function logForUserModel($user)
